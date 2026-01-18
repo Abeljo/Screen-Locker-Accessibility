@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    accessibility_service.xml
+    
+    Configuration for the AccessibilityService.
+    
+    Key points:
+    - We don't need any accessibility event types since we only use performGlobalAction()
+    - canPerformGestures is NOT needed for GLOBAL_ACTION_LOCK_SCREEN
+    - This is a minimal config that requests no special capabilities
+    - The service only needs to exist; it doesn't monitor any apps
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault"
+    android:canRetrieveWindowContent="false"
+    android:description="@string/accessibility_service_description"
+    android:settingsActivity="com.abeljo.screenlocker.MainActivity" />

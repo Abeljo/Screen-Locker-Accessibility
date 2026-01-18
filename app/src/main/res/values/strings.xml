@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    strings.xml
+    
+    All string resources for the app.
+    Keeping strings in resources makes localization easier if needed later.
+-->
+<resources>
+    <!-- App name -->
+    <string name="app_name">Screen Locker</string>
+
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_label">Screen Lock Service</string>
+    <string name="accessibility_service_description">Allows the app to lock your screen with a single tap. This service only performs screen lock - it does not read or modify any content on your screen.</string>
+
+    <!-- Main Activity -->
+    <string name="service_enabled">✓ Service is enabled</string>
+    <string name="service_disabled">⚠ Service is not enabled</string>
+    <string name="lock_screen">Lock Screen</string>
+    <string name="enable_service">Enable Service</string>
+    <string name="enable_service_hint">Please find and enable \"Screen Lock Service\" in the Accessibility settings</string>
+    <string name="lock_failed">Failed to lock screen</string>
+
+    <!-- Widget -->
+    <string name="widget_name">Lock Screen</string>
+    <string name="service_not_enabled">Please enable the accessibility service first</string>
+
+    <!-- Quick Settings Tile -->
+    <string name="tile_label">Lock Screen</string>
+</resources>

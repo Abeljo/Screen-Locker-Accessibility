@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    widget_lock_screen.xml
+    
+    Layout for the home screen widget.
+    Simple circular button with a lock icon - minimal and tappable.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/widgetIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/lock_screen"
+        android:src="@drawable/ic_lock" />
+
+</FrameLayout>

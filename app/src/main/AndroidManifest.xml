@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml
+    
+    This manifest declares all components needed for the Screen Locker app:
+    1. MainActivity - The main UI with a lock button
+    2. ScreenLockService - AccessibilityService that actually locks the screen
+    3. LockScreenWidget - Home screen widget
+    4. LockScreenTileService - Quick Settings tile
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ScreenLocker"
+        tools:targetApi="31">
+
+        <!-- Main Activity: Shows a single button to lock the screen -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            AccessibilityService: This is the core of the app.
+            It uses performGlobalAction(GLOBAL_ACTION_LOCK_SCREEN) to lock the screen.
+            The user must enable this service in Settings > Accessibility.
+        -->
+        <service
+            android:name=".ScreenLockService"
+            android:exported="true"
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service" />
+        </service>
+
+        <!--
+            Home Screen Widget: Provides a one-tap lock button on the home screen.
+            When tapped, it sends a broadcast that triggers screen lock.
+        -->
+        <receiver
+            android:name=".LockScreenWidget"
+            android:exported="true"
+            android:label="@string/widget_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.abeljo.screenlocker.LOCK_SCREEN" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_lock_screen_info" />
+        </receiver>
+
+        <!--
+            Quick Settings Tile: Appears in the swipe-down control panel.
+            When tapped, it locks the screen instantly.
+        -->
+        <service
+            android:name=".LockScreenTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_lock"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

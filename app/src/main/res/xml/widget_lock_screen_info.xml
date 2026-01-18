@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    widget_lock_screen_info.xml
+    
+    Widget provider configuration.
+    
+    Defines:
+    - Minimum size: 1x1 cell (smallest possible widget)
+    - Update period: 0 (no automatic updates needed - it's just a button)
+    - Preview image and layout for the widget picker
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/widget_lock_screen"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:previewImage="@drawable/ic_lock"
+    android:resizeMode="none"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen" />
